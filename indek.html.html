@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ucapan untuk Faraa</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #d3cce3, #e9e4f0);
+      color: #4b3b75;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .envelope {
+      width: 200px;
+      height: 120px;
+      background: #b388eb;
+      position: relative;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: bounce 1.5s infinite;
+    }
+
+    .envelope::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 100px solid transparent;
+      border-right: 100px solid transparent;
+      border-bottom: 60px solid #d1b3ff;
+    }
+
+    .envelope span {
+      font-size: 1.2rem;
+      color: white;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .card {
+      background: #f5f0fa;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(75, 59, 117, 0.2);
+      max-width: 700px;
+      text-align: center;
+      display: none;
+      position: relative;
+      animation: fadeIn 1.2s ease;
+      overflow: hidden;
+    }
+
+    .minion {
+      width: 120px;
+      animation: dance 1.5s infinite;
+    }
+
+    @keyframes dance {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(5deg); }
+      75% { transform: rotate(-5deg); }
+    }
+
+    .banana {
+      position: absolute;
+      width: 50px;
+      transition: all 0.5s ease;
+      z-index: 10;
+    }
+
+    .emoji {
+      font-size: 1.5rem;
+    }
+
+    h1 {
+      color: #9b59b6;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body onclick="dropBanana(event)">
+
+  <div class="envelope" id="envelope" onclick="openCard(event)">
+    <span>📩 Klik untuk Buka</span>
+  </div>
+
+  <div class="card" id="card">
+    <img src="https://upload.wikimedia.org/wikipedia/en/8/8e/Minions_promo.png" alt="Minion" class="minion">
+    <h1>🎉 Selamat Ulang Tahun, Faraa! 🎂</h1>
+    <p>Faraa, sebelumnya maaf ya gw gak bisa ikut merayakan hari istimewa lu dan gw juga agak dry text kemaren.</p>
+    <p>Tapi dari hati yang paling tulus, aku ingin mengucapkan:</p>
+    <p class="emoji">🌸 Selamat bertambah usia! 🌸</p>
+    <p>Semoga setiap helaan napasmu di usia baru ini diberi keberkahan tanpa henti oleh Allah SWT. ✨</p>
+    <p>Di depan sana, mungkin banyak rintangan menanti, tapi jangan pernah merasa harus menapakinya sendiri.</p>
+    <p>Libatkan Allah 🤲 dan bukalah hati untuk orang-orang yang peduli di sekitarmu 🤍 Agar lelahmu tak menjelma jadi luka yang dalam.</p>
+    <p>🌙 Hidup memang bisa terasa sepi… tapi saat kita melibatkan-Nya dalam setiap langkah, segala beban insyaAllah jadi lebih ringan.</p>
+    <p>Langit selalu mendengar, dan doa-doa baik akan menemukan jalannya pulang. 🌈</p>
+    <p class="emoji">💖 Happy Birthday, Faraa! 💖</p>
+    <p>Semoga tahun ini membawamu pada versi terbaik dari dirimu sendiri. 🌷</p>
+  </div>
+
+  <script>
+    const envelope = document.getElementById('envelope');
+    const card = document.getElementById('card');
+
+    function openCard(e) {
+      e.stopPropagation();
+      envelope.style.display = 'none';
+      card.style.display = 'block';
+    }
+
+    function dropBanana(e) {
+      const banana = document.createElement("img");
+      banana.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Banana_icon.png/600px-Banana_icon.png";
+      banana.className = "banana";
+      banana.style.left = `${e.clientX - 25}px`;
+      banana.style.top = `${e.clientY - 25}px`;
+      document.body.appendChild(banana);
+      setTimeout(() => {
+        banana.remove();
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
